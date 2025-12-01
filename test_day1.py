@@ -224,3 +224,17 @@ def test_part1():
     )
 
     assert result.stdout == "1152\n"
+
+def test_part2():
+    """
+    Test the main function of part2.py directly.
+    """
+    subprocess_command = "python day1/part2.py day1/problem.txt"
+    result = subprocess.run(
+        subprocess_command,
+        shell=True,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.stdout == "6671\n"
