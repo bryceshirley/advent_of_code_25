@@ -7,7 +7,7 @@ module dial_utils
 contains
 
     function turn_one_position(pos, direction) result(new_pos)
-        integer, intent(in) :: pos
+        integer, intent(in) :: pos ! intent(in) means this argument is read-only 
         character(len=1), intent(in) :: direction
         integer :: new_pos
 
@@ -24,10 +24,10 @@ contains
 
 
     subroutine turn_dial(pos, turn_amount, direction, lands)
-        integer, intent(inout) :: pos
+        integer, intent(inout) :: pos ! intent(inout) means this argument can be read and modified
         integer, intent(in) :: turn_amount
         character(len=1), intent(in) :: direction
-        integer, intent(out) :: lands
+        integer, intent(out) :: lands ! intent(out) means this argument is used to return a value
         integer :: i
 
         lands = 0
