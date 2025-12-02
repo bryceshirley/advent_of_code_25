@@ -1,4 +1,4 @@
-
+"""Utility functions for dial turning simulation."""
 
 def turn_one_position(pos, direction):
     """
@@ -18,6 +18,7 @@ def turn_one_position(pos, direction):
     else:
         raise ValueError("Direction must be 'R' or 'L'.")
 
+
 def turn_dial(pos, turn_amount, direction):
     """
     Turn the dial to the left by a specified amount.
@@ -35,6 +36,7 @@ def turn_dial(pos, turn_amount, direction):
         if pos == 0:
             lands += 1
     return pos, lands
+
 
 def read_input(file_path):
     """
@@ -69,11 +71,12 @@ def count_zero_lands_part1(lines, verbose=False):
 
         if verbose:
             print(f"The dial is rotated {line} to point at {position}.")
-        
+
         # Count how many times we land on position 0
         if position == 0:
             count += 1
     return count
+
 
 def count_zero_lands_part2(lines, verbose=False):
     """
@@ -91,7 +94,6 @@ def count_zero_lands_part2(lines, verbose=False):
         direction = line[0]
         amount = int(line[1:])
 
-        tmp_position = position
         position, lands = turn_dial(position, amount, direction)
         if verbose:
             stdout = f"The dial is rotated {line} to point at {position}"
@@ -99,7 +101,6 @@ def count_zero_lands_part2(lines, verbose=False):
                 stdout += f"; during this rotation, the number of times it points at 0 is {lands}"
             print(stdout+".")
             # print(tmp_position, position, lands)
-        
+
         count += lands
     return count
-    

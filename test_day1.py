@@ -1,8 +1,11 @@
-import pytest
-import subprocess
-import sys
+"""Unit tests for day1 module functions."""
 import os
-from day1.utils import count_zero_lands_part1, count_zero_lands_part2, read_input, turn_dial
+import subprocess
+
+import pytest
+
+from day1.utils import (count_zero_lands_part1, count_zero_lands_part2,
+                        read_input, turn_dial)
 
 
 @pytest.mark.parametrize(
@@ -17,7 +20,9 @@ def test_turn_right(current_position, turn_amount, expected_position):
     """
     Test turn_right function with various cases.
     """
-    assert turn_dial(current_position, turn_amount, 'R')[0] == expected_position
+    assert turn_dial(current_position, turn_amount, 'R')[
+        0] == expected_position
+
 
 @pytest.mark.parametrize(
     "current_position, turn_amount, expected_position",
@@ -31,7 +36,9 @@ def test_turn_left(current_position, turn_amount, expected_position):
     """
     Test turn_left function with various cases.
     """
-    assert turn_dial(current_position, turn_amount, 'L')[0] == expected_position
+    assert turn_dial(current_position, turn_amount, 'L')[
+        0] == expected_position
+
 
 def test_read_input():
     """
@@ -48,6 +55,7 @@ def test_read_input():
     os.remove(test_file)
 
     assert turn_list == test_lines
+
 
 @pytest.mark.parametrize(
     "current_position, turn_amount, direction, expected_lands",
@@ -67,18 +75,20 @@ def test_turn_dial(current_position, turn_amount, direction, expected_lands):
     """
     Test turn_dial function for both directions and various turn amounts.
     """
-    assert turn_dial(current_position, turn_amount, direction)[1] == expected_lands
+    assert turn_dial(current_position, turn_amount,
+                     direction)[1] == expected_lands
 
 
 def test_count_zero_lands_part1():
     """
     Test to simulate a sequence of turns and verify final position.
     """
-    lines = ['L68', 'L30', 'R48', 'L5', 'R60', 'L55', 'L1', 'L99', 'R14', 'L82']
+    lines = ['L68', 'L30', 'R48', 'L5', 'R60',
+             'L55', 'L1', 'L99', 'R14', 'L82']
 
     password = count_zero_lands_part1(lines, verbose=False)
 
-    assert password == 3 
+    assert password == 3
 
     lines = ['L50']
 
@@ -91,6 +101,7 @@ def test_count_zero_lands_part1():
     lines = ['R25', 'L25', 'R25', 'L25']
 
     assert count_zero_lands_part1(lines, verbose=False) == 0
+
 
 def test_integration_part1():
     """
@@ -115,7 +126,8 @@ def test_integration_part1():
         text=True,
     )
 
-    assert result.stdout == f"The dial landed on 0 a total of 3 times during this process.\n"  # Adjust expected output based on the test input
+    # Adjust expected output based on the test input
+    assert result.stdout == "The dial landed on 0 a total of 3 times during this process.\n"
     assert result.stdout != ""
 
     subprocess_command = f"{base_command} -vv"
@@ -145,7 +157,8 @@ def test_count_zero_lands_part2():
     """
     Test to simulate a sequence of turns and verify final position for part 2.
     """
-    lines = ['L68', 'L30', 'R48', 'L5', 'R60', 'L55', 'L1', 'L99', 'R14', 'L82']
+    lines = ['L68', 'L30', 'R48', 'L5', 'R60',
+             'L55', 'L1', 'L99', 'R14', 'L82']
 
     password = count_zero_lands_part2(lines, verbose=False)
 
@@ -162,6 +175,7 @@ def test_count_zero_lands_part2():
     lines = ['R25', 'L25', 'R25', 'L25']
 
     assert count_zero_lands_part2(lines, verbose=False) == 0
+
 
 def test_integration_part2():
     """
@@ -224,6 +238,7 @@ def test_part1():
     )
 
     assert result.stdout == "1152\n"
+
 
 def test_part2():
     """
