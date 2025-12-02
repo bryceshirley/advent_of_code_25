@@ -1,6 +1,7 @@
 """Unit tests for day1 module functions."""
 import os
 import subprocess
+import time
 
 import pytest
 
@@ -245,11 +246,13 @@ def test_part2():
     Test the main function of part2.py directly.
     """
     subprocess_command = "python day1/part2.py day1/problem.txt"
+    start_time = time.time()
     result = subprocess.run(
         subprocess_command,
         shell=True,
         capture_output=True,
         text=True,
     )
-
+    end_time = time.time()
+    print(f"Execution time for part2 in python: {end_time - start_time} seconds")
     assert result.stdout == "6671\n"

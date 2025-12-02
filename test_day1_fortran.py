@@ -5,6 +5,7 @@ import subprocess
 
 import pytest
 import numpy as np
+import time
 
 import day1_fortran.dial_utils_fortran as duf
 
@@ -67,6 +68,10 @@ def test_part2():
     """
     Test the main function of part2.py directly.
     """
+    # time the execution
+    start_time = time.time()
     command = "./day1_fortran/dial_sim_part2 day1/problem.txt"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    end_time = time.time()
+    print(f"Execution time for part2 in fortran: {end_time - start_time} seconds")
     assert result.stdout.strip() == "6671"
