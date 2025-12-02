@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Pylint
         run: |
-          pip install pylint
+          pip install pylint numpy
 
       - name: Run Pylint
         run: |
